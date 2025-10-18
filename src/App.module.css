@@ -1,0 +1,79 @@
+*{
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+}
+body {
+    background-color: #120d04;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+.loginContainer {
+    width: 300px;
+    min-width: 80%;
+    display: block;
+    border: 1px solid #1d1d69;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.12);
+    align-content: center;
+    opacity: 100%;
+    justify-content: center;
+    line-height: 60px;
+    padding: 20px;
+}
+.loginContainer h2 {
+    text-align: center;
+}
+.loginContainer h3 {
+    color: #5e5e98;
+}
+input {
+    width: 95%;
+    height: 35px;
+    border-width: 0;
+    border-bottom: 1px solid #95e5ac;
+    margin: auto;
+    align-self: center;
+    justify-self: center;
+    padding-left: 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+.login {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #5581d4;
+}
+::placeholder {
+    color: #b9dfc5;
+}
+
+.signUpPage {
+    display: none;
+    position: absolute;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    line-height: 50px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    border: 1px solid navy;
+    justify-self: center;
+    top: 4.5rem;
+}
+.signUpPage h3 {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+.submit {
+    width: 100%;
+    margin-top: 30px;
+    color: white;
+    background-color: rgb(76, 76, 139);
+}
