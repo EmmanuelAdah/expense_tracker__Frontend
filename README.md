@@ -15,6 +15,21 @@ Clean UI icons are provided by **Lucide React**.
 
 ---
 
+##Project Structure
+
+src/
+│
+├── assets/          # Images, fonts, etc.
+├── components/      # Reusable UI components
+├── features/        # Redux feature slices
+├── pages/           # Page-level components
+├── store/           # Redux store setup
+├── hooks/           # Custom hooks
+├── utils/           # Helper functions
+├── App.jsx          # Root component
+└── main.jsx         # Entry point
+
+
 ## 📦 Installation
 
 Clone the repository and install dependencies:
