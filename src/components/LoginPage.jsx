@@ -116,7 +116,10 @@ const LoginPage = () => {
           <button
             className={styles.login}
             type="submit"
-            disabled={isLoading}
+            disabled={
+              isLoading ||
+                !formData.username.trim() ||
+                !formData.password.trim() }
           >
             {isLoading ? "Logging in..." : "Login"}
           </button>
