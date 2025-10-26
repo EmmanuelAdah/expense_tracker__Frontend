@@ -17,6 +17,7 @@ Clean UI icons are provided by **Lucide React**.
 
 ##Project Structure
 
+"""
 src/
 │
 ├── assets/          # Images, fonts, etc.
@@ -27,7 +28,8 @@ src/
 ├── hooks/           # Custom hooks
 ├── utils/           # Helper functions
 ├── App.jsx          # Root component
-└── main.jsx         # Entry point
+└── main.jsx         # Entry point 
+"""
 
 
 ## 📦 Installation
