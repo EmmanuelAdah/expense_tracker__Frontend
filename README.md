@@ -20,6 +20,6 @@ Clean UI icons are provided by **Lucide React**.
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/your-username/your-repo-name.git](https://github.com/EmmanuelAdah/expense_tracker__Frontend.git
 cd your-repo-name
 npm install
