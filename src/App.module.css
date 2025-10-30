@@ -22,12 +22,12 @@ body {
 
 
 .loginContainer {
+
     width: 300px;
-    min-width: 80%;
+    min-width: 70%;
     display: block;
     border: 1px solid #1d1d69;
     border-radius: 10px;
-    /*background-color: rgb(77, 36, 36);*/
     align-content: center;
     opacity: 100%;
     justify-content: center;
