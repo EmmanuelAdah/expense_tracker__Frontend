@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import styles from "../App.module.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useUserRegisterMutation } from "../api/authApi.jsx";
 
 function Register() {
+    const [register, { isLoading, isError }] = useUserRegisterMutation();
+
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -10,6 +13,31 @@ function Register() {
         username: '',
         password: ''
     })
+
+    const handleChange = (event) => {
+        console.log(event.target.value);
+        console.log(formData);
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value, // dynamically update fields/attributes
+    });
+  }
+
+  const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try{
+        const result = await register(formData).unwrap();
+
+            localStorage.setItem("token", result.token);
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("email", result.email);
+            window.location.href = "/dashboard";
+
+        } catch (err) {
+            alert(err?.data?.message || "Something went wrong");
+        }
+  }
 
     return (
         <div>
@@ -25,23 +53,56 @@ function Register() {
         <div className={styles.signUpPage}
             style={{backdropFilter: 'blur(18px)'}}>
             <h3>Provide your details</h3>
-            <form>
-                <input type="text" placeholder="Firstname" required />
-                <input type="text" placeholder="Lastname" required />
-                <input type="email" placeholder="Email" required />
-                <input type="text" placeholder="Username" required />
-                <input type="password" placeholder="Password" required />
 
-                <button type="submit" className={styles.submit}
-                disabled={
-                    !formData.firstname.trim() ||
-                    !formData.lastname.trim() ||
-                    !formData.email.trim() ||
-                    !formData.username.trim() ||
-                    !formData.password.trim()
-              }
-                >
-                    Submit
+            <form onSubmit={handleSubmit}>
+                <input type="text"
+                       name="firstname"
+                       placeholder="Firstname"
+                       value={formData.firstname}
+                onChange={handleChange}
+                required />
+
+                <input type="text"
+                       name="lastname"
+                       placeholder="Lastname"
+                       value={formData.lastname}
+                onChange={handleChange}
+                required />
+
+                <input type="email"
+                       name="email"
+                       placeholder="Email"
+                       value={formData.email}
+                onChange={handleChange}
+                required />
+
+                <input type="text"
+                       name="username"
+                       placeholder="Username"
+                       value={formData.username}
+                onChange={handleChange}
+                       required />
+
+                <input type="password"
+                       name="password"
+                       placeholder="Password"
+                       value={formData.password}
+                onChange={handleChange}
+                       required />
+
+                <button
+                      type="submit"
+                      className={styles.submit}
+                      disabled={
+                        isLoading ||
+                        !formData.firstname.trim() ||
+                        !formData.lastname.trim() ||
+                        !formData.email.trim() ||
+                        !formData.username.trim() ||
+                        !formData.password.trim()
+                      }
+                    >
+                      {isLoading ? "Submitting..." : "Submit"}
                 </button>
             </form>
             <p>

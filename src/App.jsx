@@ -1,14 +1,12 @@
-import React from 'react'
-import LoginPage from './components/LoginPage'
-import DashBoard from "./components/DashBoard.jsx";
+import router from './routes/routes.jsx'
+import { RouterProvider } from 'react-router'
 
 function App() {
 
   return (
-    <>
-       <LoginPage/>
-       <DashBoard/>
-    </>
+      <>
+        <RouterProvider router={router} />
+      </>
   )
 }
 
