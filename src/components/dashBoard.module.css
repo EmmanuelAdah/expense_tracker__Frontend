@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    background-size: cover;
+    background-image: url("https://img.freepik.com/premium-photo/automated-expense-tracking-reporting-using-wallpaper_987764-40350.jpg");
+}
+.welcome-page {
+    width: 100%;
+}
