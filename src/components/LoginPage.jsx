@@ -1,39 +1,43 @@
 import React, { useState } from "react";
 import styles from "../App.module.css";
 import {Link, useNavigate} from "react-router-dom";
-import { useUserLoginMutation } from "../api/userApi.jsx";
+import { useUserLoginMutation } from "../api/authApi.jsx";
 
 const LoginPage = () => {
 
     const navigate = useNavigate();
 
-  // ✅ Step 1: Create local state for form inputs
+  // Creating a local state for form inputs
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
-  // ✅ Step 2: RTK Query login mutation hook
-  const [login, { isLoading, isError, data }] = useUserLoginMutation();
+  // RTK Query login mutation hook
+  const [login, { isLoading, isError }] = useUserLoginMutation();
+  const [error, setError] = useState("");
 
-  // ✅ Step 3: Handle input changes
-  const handleChange = (e) => {
+  // Handle input changes
+  const handleChange = (event) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value, // dynamically update username/password
+      [event.target.name]: event.target.value, // dynamically update username/password
     });
   };
 
-  // ✅ Step 4: Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const result = await login(formData).unwrap(); // unwrap to get raw response
+      const result = await login(formData).unwrap();
             localStorage.setItem("token", result.token);
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("email", result.email);
             navigate("/dashboard");
       // 👉 you can redirect or store token here
     } catch (err) {
-      console.error("Login failed:", err);
+        const message = err?.data?.message;
+      setError(message);
     }
   };
 
@@ -51,7 +55,7 @@ const LoginPage = () => {
             fontSize: "17px",
           }}
         >
-          Home
+            Home
         </Link>
 
         <Link
@@ -98,8 +102,8 @@ const LoginPage = () => {
           </div>
 
           {isError && (
-            <p style={{ color: "red", marginTop: "10px" }}>
-              Invalid username or password
+            <p style={{ color: "orange", marginTop: "10px", position: "relative" }}>
+                {error}
             </p>
           )}
 
