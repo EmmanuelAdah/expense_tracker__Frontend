@@ -3,6 +3,7 @@ import WelcomePage from "../components/WelcomePage";
 import LoginPage from "../components/LoginPage";
 import Register from "../components/Register";
 import DashBoard from "../components/DashBoard";
+import AddExpensePopup from "../components/AddExpensePopup.jsx";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     {
         path:"/dashboard",
         element: <DashBoard />
+    },
+    {
+        path:"/addExpense",
+        element: <AddExpensePopup />
     }
 ]);
 
